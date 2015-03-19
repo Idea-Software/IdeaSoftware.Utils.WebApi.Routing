@@ -32,6 +32,12 @@ namespace IdeaSoftware.Utils.WebApi.Routing
         public bool Match(HttpRequestMessage request, IHttpRoute route, string parameterName, IDictionary<string, object> values,
             HttpRouteDirection routeDirection)
         {
+            //allow preflight
+            if (request.Method == HttpMethod.Options 
+                && request.Headers.Contains("Access-Control-Request-Headers")
+                && request.Headers.Contains("Access-Control-Request-Method"))
+                return true;
+
             if (!request.Headers.Contains(_header))
                 return false;
             if (_headerValue == "*")

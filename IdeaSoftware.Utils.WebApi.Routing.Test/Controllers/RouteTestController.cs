@@ -1,27 +1,33 @@
 ﻿using System;
 using System.Linq;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace IdeaSoftware.Utils.WebApi.Routing.Test.Controllers
 {
     public class RouteTestController : ApiController
     {
-        [RouteWithHeader("routeA", "test-abc", "A")]
+        [EnableCors("*", "*", "*", "test-abc")]
+        [HeaderBasedRoute("routeA", "test-abc", "A")]
         public IHttpActionResult Get_RouteA()
         {
             if (!Request.Headers.Contains("test-abc") || Request.Headers.GetValues("test-abc").First() != "A")
                 return InternalServerError(new ApplicationException("Attribute logic is flawed."));
             return Ok("Route A resolved correctly");
         }
-        [RouteWithHeader("routeB", "test-abc", "B")]
+
+        [EnableCors("*", "*", "*", "test-abc")]
+        [HeaderBasedRoute("routeB", "test-abc", "B")]
         public IHttpActionResult Get_RouteB()
         {
             if (!Request.Headers.Contains("test-abc") || Request.Headers.GetValues("test-abc").First() != "B")
                 return InternalServerError(new ApplicationException("Attribute logic is flawed."));
             return Ok("Route B resolved correctly");
         }
-        [RouteWithHeader("routeCD", "test-abc", "C")]
-        [RouteWithHeader("routeCD", "test-abc", "D")]
+
+        [EnableCors("*", "*", "*", "test-abc")]
+        [HeaderBasedRoute("routeCD", "test-abc", "C")]
+        [HeaderBasedRoute("routeCD", "test-abc", "D")]
         public IHttpActionResult Get_MultiRouteCD()
         {
             if (!Request.Headers.Contains("test-abc") || (Request.Headers.GetValues("test-abc").First() != "C" && Request.Headers.GetValues("test-abc").First() != "D"))
@@ -33,7 +39,8 @@ namespace IdeaSoftware.Utils.WebApi.Routing.Test.Controllers
         //wildcards
 
 
-        [RouteWithHeader("routeE", "test-abc", "*")]
+        [EnableCors("*", "*", "*", "test-abc")]
+        [HeaderBasedRoute("routeE", "test-abc", "*")]
         public IHttpActionResult Get_WildcardRoute()
         {
             if (!Request.Headers.Contains("test-abc"))
@@ -43,7 +50,8 @@ namespace IdeaSoftware.Utils.WebApi.Routing.Test.Controllers
 
         //exclusion
 
-        [RouteWithHeader("routeF", "test-abc", "!F")]
+        [EnableCors("*", "*", "*", "test-abc")]
+        [HeaderBasedRoute("routeF", "test-abc", "!F")]
         public IHttpActionResult Get_ExclusiveRouteE()
         {
             if (!Request.Headers.Contains("test-abc") || (Request.Headers.GetValues("test-abc").First() == "F"))

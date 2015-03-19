@@ -50,5 +50,18 @@ namespace IdeaSoftware.Utils.WebApi.Routing.UnitTests
             constraintUnderTest.Match(request, null, null, null, default(HttpRouteDirection)).Should().BeFalse();
         }
 
+        /// <summary>
+        /// This is required for CORS because preflight never include custom headers.
+        /// </summary>
+        [Test]
+        public void ReturnTrue_OnMatch_WhenCorsPreflight()
+        {
+            var constraintUnderTest = new HeaderConstraint("test_abc", "!eee");
+            var request = new HttpRequestMessage { Method = HttpMethod.Options };
+            request.Headers.Add("Access-Control-Request-Headers", "test_abc");
+            request.Headers.Add("Access-Control-Request-Method", "GET");
+            constraintUnderTest.Match(request, null, null, null, default(HttpRouteDirection)).Should().BeTrue();
+        }
+
     }
 }

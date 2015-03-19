@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>IdeaSoftware.Utils.WebApi.Routing</id>
-        <version>1.1.1</version>
+        <version>1.1.2</version>
         <authors>IdeaSoftware</authors>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>Routing helpers for WebApi</description>
