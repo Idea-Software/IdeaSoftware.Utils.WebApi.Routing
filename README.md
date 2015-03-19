@@ -13,7 +13,7 @@ public IHttpActionResult Get()
 }
 ```
 
-###Require Customer Header to be present with any value with wildcard
+###Require Customer Header to be present with any value using wildcard
 ```C#
 [HeaderBasedRoute("/api/myroute", "my-custom-header", "*")]
 ```
