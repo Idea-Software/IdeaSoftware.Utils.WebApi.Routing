@@ -13,6 +13,16 @@ public IHttpActionResult Get()
 }
 ```
 
+###Bind multiple Headers to the same route
+```C#
+[HeaderBasedRoute("/api/myroute", "my-custom-headerA", "valueA")]
+[HeaderBasedRoute("/api/myroute", "my-custom-headerB", "valueB")]
+public IHttpActionResult Get()
+{
+    return Ok();
+}
+```
+
 ###Require Custom Header to be present with any value using wildcard
 ```C#
 [HeaderBasedRoute("/api/myroute", "my-custom-header", "*")]
