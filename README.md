@@ -18,7 +18,7 @@ public IHttpActionResult Get()
 [HeaderBasedRoute("/api/myroute", "my-custom-header", "*")]
 ```
 
-###Excluding request with based on header value with !
+###Excluding routes based on header value with !
 ```C#
 [HeaderBasedRoute("/api/myroute", "my-custom-header", "!valueB")]
 ```
