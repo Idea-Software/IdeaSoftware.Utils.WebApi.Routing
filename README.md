@@ -1,4 +1,4 @@
-# IdeaSoftware.Utils.WebApi.Routing [![NuGet Version](http://img.shields.io/nuget/v/IdeaSoftware.Utils.WebApi.Routing.svg?style=flat)](https://www.nuget.org/packages/IdeaSoftware.Utils.WebApi.Routing/)
+# IdeaSoftware.Utils.WebApi.Routing [![NuGet Version](http://img.shields.io/nuget/v/IdeaSoftware.Utils.WebApi.Routing.svg?style=flat)](https://www.nuget.org/packages/IdeaSoftware.Utils.WebApi.Routing/) [![NuGet Version](http://img.shields.io/nuget/dt/IdeaSoftware.Utils.WebApi.Routing.svg?style=flat)](https://www.nuget.org/packages/IdeaSoftware.Utils.WebApi.Routing/)
 Routing helpers for Web API
 
 ##Header Based Routing
